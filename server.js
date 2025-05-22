@@ -19,6 +19,12 @@ db.connect()
     const frontendRoutes = require('./routes/frontRoutes');
     app.use('/', frontendRoutes);
 
+    const alunosRoutes = require('./routes/alunos');
+    app.use('/alunos', alunosRoutes);
+
+    const cursosRoutes = require('./routes/cursos');
+    app.use('/cursos', cursosRoutes);
+
     // Middleware para lidar com erros de rota não encontrada
     app.use((req, res, next) => {
       res.status(404).send('Página não encontrada');
@@ -32,7 +38,7 @@ db.connect()
 
     const PORT = process.env.PORT || 3000;
     app.listen(PORT, () => {
-      console.log(`Servidor rodando na porta ${PORT}`);
+    console.log(`Servidor rodando em http://localhost:${PORT}`);
     });
   })
   .catch(err => {
